@@ -22,10 +22,10 @@ module ActsAsFlyingSaucer
 				command = "#{Nailgun::NgCommand::NGPATH} --nailgun-server #{ActsAsFlyingSaucer::Config.options[:nailgun_host]}  --nailgun-port #{ ActsAsFlyingSaucer::Config.options[:nailgun_port]} Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
 			else
 				command = "#{options[:java_bin]} -Xmx#{options[:max_memory_mb]}m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.Xhtml2Pdf #{options[:input_file]} #{options[:output_file]}"
-      end
-      exit_code = system(command)
-      raise("Unexpected exit code #{exit_code} in write_pdf while executing Java command: #{command}") if exit_code != 0
-      exit_code
+			end
+			exit_code = system(command)
+			raise("Unexpected exit code #{exit_code} in write_pdf while executing Java command: #{command}") if exit_code != 0
+			exit_code
 		end
 
 		def self.encrypt_pdf(options,output_file_name,password)
@@ -36,9 +36,9 @@ module ActsAsFlyingSaucer
 			else
 				command = "#{options[:java_bin]} -Xmx#{options[:max_memory_mb]}m -Djava.awt.headless=true -cp #{class_path} acts_as_flying_saucer.encryptPdf #{options[:output_file]} #{output_file_name} #{password}"
 			end
-      exit_code = system(command)
-      raise("Unexpected exit code #{exit_code} in encrypt_pdf while executing Java command: #{command}") if exit_code != 0
-      exit_code
+			exit_code = system(command)
+			raise("Unexpected exit code #{exit_code} in encrypt_pdf while executing Java command: #{command}") if exit_code != 0
+			exit_code
 		end
 
 	end
