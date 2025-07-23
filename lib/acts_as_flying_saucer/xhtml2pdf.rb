@@ -6,7 +6,7 @@ module ActsAsFlyingSaucer
 	class Xhtml2Pdf
 		def self.write_pdf(options)
 
-			if 	!File.exists?(options[:input_file])
+			if 	!File.exist?(options[:input_file])
 				File.open(options[:input_file], 'w') do |file|
 					file << options[:html]
 				end
